@@ -36,8 +36,7 @@ Check out the project live on Vercel:
 ---
 ## 🧰 File Structure
 
-modern-todo-list/
-│
+modern-todo-list/ <br>
 ├── index.html          # Main HTML structure <br>
 ├── styles.css          # Main app styling <br>
 ├── darkbtn.css         # Dark mode switch styling <br>
