@@ -38,11 +38,11 @@ Check out the project live on Vercel:
 
 modern-todo-list/
 │
-├── index.html          # Main HTML structure
-├── styles.css          # Main app styling
-├── darkbtn.css         # Dark mode switch styling
-├── script.js           # App logic and interactivity
-└── README.md           # Documentation
+├── index.html          # Main HTML structure <br>
+├── styles.css          # Main app styling <br>
+├── darkbtn.css         # Dark mode switch styling <br>
+├── script.js           # App logic and interactivity <br>
+└── README.md           # Documentation <br>
 
 
 ---
