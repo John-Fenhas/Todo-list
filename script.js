@@ -1,19 +1,17 @@
-// Get elements
 const addBtn = document.getElementById("addBtn");
 const todoList = document.getElementById("todoList");
 const nameInput = document.getElementById("todoName");
 const dateInput = document.getElementById("todoDate");
 
-// Load todos from localStorage
+
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 renderTodos();
 
-// Add new todo
 addBtn.addEventListener("click", () => {
   const name = nameInput.value.trim();
   const date = dateInput.value;
 
-  if (!name) return; // Prevent empty todos
+  if (!name) return; 
 
   const todo = {
     name,
@@ -25,22 +23,19 @@ addBtn.addEventListener("click", () => {
   saveTodos();
   renderTodos();
 
-  // Reset input fields
   nameInput.value = "";
   dateInput.value = "";
 });
 
-// Render todos
 function renderTodos() {
   todoList.innerHTML = "";
 
-  // Sort: incomplete first, then completed
   const sortedTodos = [
     ...todos.filter((t) => !t.completed),
     ...todos.filter((t) => t.completed),
   ];
 
-  sortedTodos.forEach((todo, index) => {
+  sortedTodos.forEach((todo) => {
     const li = document.createElement("li");
     li.innerHTML = `
       <input type="checkbox" ${todo.completed ? "checked" : ""}>
@@ -52,7 +47,6 @@ function renderTodos() {
       li.classList.add("completed");
     }
 
-    // Checkbox toggle
     const checkbox = li.querySelector("input[type='checkbox']");
     checkbox.addEventListener("change", () => {
       const realIndex = todos.findIndex(
@@ -65,7 +59,6 @@ function renderTodos() {
       }
     });
 
-    // Delete button
     li.querySelector(".delete").addEventListener("click", () => {
       const realIndex = todos.findIndex(
         (t) => t.name === todo.name && t.date === todo.date
@@ -81,7 +74,26 @@ function renderTodos() {
   });
 }
 
-// Save todos
 function saveTodos() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const switchBtn = document.getElementById('switchBtn')
+const toggle = document.getElementById('input')
+toggle.checked = prefersDark
+if (!toggle.checked) {
+  document.body.classList.add('light')
+}
+
+switchBtn.addEventListener('click', ()=>{
+  document.body.classList.add('fading');
+  setTimeout(() => {
+    toggle.checked = !toggle.checked;
+    document.body.classList.toggle('light', !toggle.checked);
+    document.body.classList.remove('fading');
+  }, 300); 
+
+})
+
